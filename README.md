@@ -1,0 +1,2 @@
+# reyst
+Duckduckgo searcher

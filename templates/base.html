@@ -1,0 +1,96 @@
+﻿{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rey'sT</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{% static 'images/favicon.ico' %}" />
+    <style>
+        *{ box-sizing: border-box; }
+        .card{
+            max-height: 450px;
+            overflow: hidden;
+        }
+        .card>.card-image{
+            max-height: 60%;
+        }
+        .rt-img{
+            height: 200px;
+        }
+        .card>.card-content{
+            height: 150px;
+        }
+        input{
+            border: 2px solid blue;
+        }
+    </style>
+</head>
+<body>
+<nav class="pink">
+    <div class="container nav-wrapper pink">
+        <a href="/" class="brand-logo" style="font-family: 'Times New Roman'">Rey'sT</a>
+        <ul id="nav-mobile" class="right">
+            <li><a href="/">Home</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <h1 style="text-align: center">What do you want to search for on Rey'sT?</h1>
+    <div class="row">
+        <div class="col s4">
+            <!-- Promo Content 1 goes here -->
+            <div class="center">
+                <i class="large material-icons" style="color: #e91e63 ">flash_on</i>
+                <p>Fast DUCKDUCKGO API web scraper</p>
+                <p class="light center">A beautiful graphical interface with Duckduckgo API.</p>
+            </div>
+        </div>
+
+        <div class="col s4">
+            <!-- Promo Content 2 goes here -->
+            <div class="center">
+                <i class="large material-icons" style="color: orange">surround_sound</i>
+                <p>Find what you want</p>
+                <p class="light center">Enter what you need an we bring it for u.</p>
+            </div>
+        </div>
+
+        <div class="col s4">
+            <!-- Promo Content 3 goes here -->
+            <div class="center">
+                <i class="large material-icons" style="color: blue">chrome_reader_mode</i>
+                <p>A much smarter front-end to Duckduckgo API</p>
+                <p class="light center">Built with Django</p>
+            </div>
+        </div>
+    </div>
+
+    <form action="{% url 'new_search' %}" method="post">
+        {% csrf_token %}
+        <div class="container">
+            <div class="row">
+                <div class="col-8">
+                    <input type="text" name="search" placeholder="search">
+                </div>
+                <div class="col-4">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Search
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    {% block content %}
+
+    {% endblock content %}
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<div class="footer container center" style="background: rgba(0,150,200,.9); padding: 20px; font-weight: bolder"> &copy; Thiruvadi Selvam S | {% now 'M Y' %}</div></body>
+</html>

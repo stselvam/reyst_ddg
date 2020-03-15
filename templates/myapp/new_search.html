@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2 style="text-align: center">{{ search | title }}</h2>
+    <div class="row">
+        {% for datum in data.RelatedTopics|slice:":3" %}
+          <div class="col s4">
+            <div class="card">
+              <div class="card-image">
+                {% ifnotequal datum.Icon.URL "" %}
+                <a href="{{ datum.FirstURL }}"><img class="rt-img" src="{{ datum.Icon.URL }}" alt="Result Image"/></a>
+                {% endifnotequal %}
+              </div>
+              <div class="card-content">
+                {{ datum.Text }} <a href="{{ datum.FirstURL }}">Read More....</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+    </div>
+    <br>
+{% endblock content %}
